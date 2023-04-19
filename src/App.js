@@ -1,23 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import Posts from './posts/Posts';
+import { useState } from 'react';
+import Dashboard from './components/ dashboard/ Dashboard';
 
 function App() {
+ const [counter, setCounter] = useState(0);
+    
+  const counterHandler =()=>{
+    setCounter(counter + 1);
+    
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Welcome To WAA_Labs</h1>
+     <Dashboard/>
+      {/* <Posts counterHandler = {counterHandler}/> */}
+      <label>{counter}</label>
+      
+      <button onClick = {counterHandler}>{counter}</button>
     </div>
   );
 }
