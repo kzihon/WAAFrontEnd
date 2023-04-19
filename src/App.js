@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Posts from './posts/Posts';
+import Posts from './components/posts/Posts';
 import { useState } from 'react';
 import Dashboard from './components/ dashboard/ Dashboard';
 

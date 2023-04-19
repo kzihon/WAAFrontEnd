@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Posts from '../../posts/Posts';
+import Posts from '../posts/Posts';
 import UpdatePost from '../updatePost/UpdatePost';
 
 const  Dashboard = () => {
