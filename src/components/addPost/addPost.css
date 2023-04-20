@@ -1,7 +1,7 @@
-.UpdatePost input,
-.UpdatePost textarea,
+.AddPost input,
+.AddPost textarea,
 
-.UpdatePost select{
+.AddPost select{
   display: block;
   width: 80%;
   box-sizing: border-box;
@@ -10,7 +10,7 @@
   font: inherit;
   margin: auto 
   }
-  .UpdatePost button {
+  .AddPost button {
     padding: 10px;
     margin: 5px 0;
     font: inherit;
@@ -19,8 +19,8 @@
     color: #fa923f;
     cursor: pointer
   }
-  .UpdatePost button:hover,
-  .UpdatePost button:active{
+  .AddPost button:hover,
+  .AddPost button:active{
     color: white;
     background-color: #fa923f;
   }

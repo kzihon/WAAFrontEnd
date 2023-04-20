@@ -1,8 +1,8 @@
 import React from "react";
-import "./updatePost.css";
-const UpdatePost = (props) => {
+import "./addPost.css";
+const AddPost = (props) => {
   return (
-    <div className="UpdatePost">
+    <div className="AddPost">
       <h1>Update a Post</h1>
 
       <label>Title</label>
@@ -23,9 +23,10 @@ const UpdatePost = (props) => {
         value={props.author}
       />
 
-      <button onClick={props.addButtonClicked}>Update Post </button>
+      {/* <button onClick={props.addButtonClicked}>Update Post </button> */}
+      <button onClick={()=>{props.postData }}> Add Post </button>
     </div>
   );
 };
 
-export default UpdatePost;
+export default AddPost;

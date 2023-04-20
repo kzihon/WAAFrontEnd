@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import Posts from '../posts/Posts';
-import UpdatePost from '../updatePost/UpdatePost';
+import UpdatePost from '../addPost/AddPost';
+import axios from 'axios';
+import PostDetails from '../postDetails/PostDetails';
+const POST_API_URL= 'http://localhost:8080/api/v1/posts'
 
 const  Dashboard = () => {
 
-  let i = 4;
+  
   const [postsState, setPostsState] = useState(
     [
       {id: 1, title: "Happiness", author: "John" },
@@ -16,24 +19,48 @@ const  Dashboard = () => {
 
   const [postState, setPostState] = useState(
    {
-    title : "default",
+    title : "",
     author : ""
    } 
   );
+  const [flag, setFlag] = useState(false);
+
+  const [postId, setPostId] = useState(0);
+
+  const flagHandler= ()=>{
+    setFlag(!flag)
+  }
+  
+  const postData = ()=>{
+    axios.post(POST_API_URL, postState)
+    .then(data =>{
+      console.log("success", data);
+      flagHandler();
+    })
+    .catch(error=>{
+      console.log("error", error)
+    })
+  }
   const onChange= (events)=>{
-    const uptatedState = { ...postState , [events.target.name]: events.target.value};
-    setPostState(uptatedState);
+    const updatedState = { ...postState , [events.target.name]: events.target.value};
+    setPostState(updatedState);
+  }
+  const onPostId= (id)=>{
+    setPostId(id);
   }
 
   return (
     <div> 
       Dashbord
-      <Posts posts = {postsState}/>
+      <Posts posts = {postsState} flag ={flag} onPostId ={onPostId}/>
       <UpdatePost 
       title = {postState.title} 
       author = {postState.author}
       onChange = {(events)=>{onChange(events)}}    
+      postData ={postData}
+      flagHandler ={flagHandler}
      />
+     <PostDetails postId = {postId}/>
     </div>
   )
 }
