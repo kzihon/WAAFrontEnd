@@ -1,32 +1,43 @@
 import React from "react";
 import "./addPost.css";
 const AddPost = (props) => {
+  const formRef = useRef()
+  const navigate = useNavigate();
+
+  const onSubmit = (e) => {
+      e.preventDefault();
+      const form = formRef.current;
+      
+      const body = {
+          name: form["name"].value,
+          title: form["title"].value
+      }
+      axios.post('http://localhost:8080/api/v1/posts', body)
+          .then(() => navigate("/posts"))
+          .catch(err => console.log(err))
+  }
+
   return (
-    <div className="AddPost">
-      <h1>Update a Post</h1>
+      <div className="NewProduct">
 
-      <label>Title</label>
-      <input
-        type="text"
-        label={"Title"}
-        name={"Title"}
-        onChange={props.onChange}
-        value={props.title}
-      />
+          <form ref={formRef} onSubmit={onSubmit}>
+              <h1>Add a Student</h1>
 
-      <label>Author</label>
-      <input
-        type="text"
-        label={"author"}
-        name={"author"}
-        onChange={props.onChange}
-        value={props.author}
-      />
+              <label>Name</label>
+              <input type="text"
+                  label={'name'}
+                  name={'name'}
+              />
 
-      {/* <button onClick={props.addButtonClicked}>Update Post </button> */}
-      <button onClick={()=>{props.postData }}> Add Post </button>
-    </div>
+              <label>GPA</label>
+              <input type="text"
+                  label={'title'}
+                  name={'title'}
+              />
+              <button>Add post </button>
+          </form>
+
+      </div>
   );
-};
-
-export default AddPost;
+  }
+export default AddPost
